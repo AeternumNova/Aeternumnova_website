@@ -1,0 +1,156 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --color-midnight: var(--midnight);
+  --color-pay: var(--pay);
+  --color-pay-bright: var(--pay-bright);
+  --color-pay-foreground: var(--pay-foreground);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+/* AeternumNova identity: white, black and blue only. Flat corporate surfaces —
+   no gradients, no glow effects. Blue accents work in both light and dark mode. */
+:root {
+  color-scheme: light;
+  --background: oklch(1 0 0);
+  --midnight: oklch(0.955 0.008 260);
+  --foreground: oklch(0.13 0.01 260);
+  --card: oklch(0.975 0.004 260);
+  --card-foreground: oklch(0.13 0.01 260);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.13 0.01 260);
+  --primary: oklch(0.13 0.01 260);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.955 0.006 260);
+  --secondary-foreground: oklch(0.13 0.01 260);
+  --muted: oklch(0.955 0.006 260);
+  --muted-foreground: oklch(0.5 0.02 260);
+  --accent: oklch(0.93 0.01 260);
+  --accent-foreground: oklch(0.13 0.01 260);
+  --destructive: oklch(0.55 0.2 25);
+  --border: oklch(0.13 0.01 260 / 16%);
+  --input: oklch(0.13 0.01 260 / 20%);
+  --grid-line: oklch(0.13 0.01 260 / 4.5%);
+  --ring: oklch(0.45 0.15 250);
+  --radius: 0.75rem;
+
+  /* AeternumPay accent: dark blue in light mode for contrast on white. */
+  --pay: oklch(0.42 0.17 260);
+  --pay-bright: oklch(0.3 0.14 262);
+  --pay-foreground: oklch(1 0 0);
+}
+
+.dark {
+  color-scheme: dark;
+  --background: oklch(0.13 0.012 260);
+  --midnight: oklch(0.19 0.045 262);
+  --foreground: oklch(0.97 0.005 260);
+  --card: oklch(0.17 0.022 262);
+  --card-foreground: oklch(0.97 0.005 260);
+  --popover: oklch(0.19 0.026 262);
+  --popover-foreground: oklch(0.97 0.005 260);
+  --primary: oklch(0.97 0.005 260);
+  --primary-foreground: oklch(0.16 0.03 262);
+  --secondary: oklch(0.23 0.03 262);
+  --secondary-foreground: oklch(0.97 0.005 260);
+  --muted: oklch(0.22 0.022 262);
+  --muted-foreground: oklch(0.71 0.02 260);
+  --accent: oklch(0.24 0.04 262);
+  --accent-foreground: oklch(0.97 0.005 260);
+  --destructive: oklch(0.7 0.19 22);
+  --border: oklch(1 0 0 / 14%);
+  --input: oklch(1 0 0 / 18%);
+  --grid-line: oklch(1 0 0 / 4%);
+  --ring: oklch(0.72 0.13 250);
+
+  /* AeternumPay accent: light blue in dark mode. */
+  --pay: oklch(0.72 0.16 250);
+  --pay-bright: oklch(0.8 0.14 247);
+  --pay-foreground: oklch(0.17 0.05 262);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+    overflow-x: hidden;
+  }
+  ::selection {
+    background: var(--pay);
+    color: var(--pay-foreground);
+  }
+}
+
+@utility grid-bg {
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 72px 72px;
+}
+
+@utility text-balance-safe {
+  text-wrap: balance;
+}
+
+@keyframes orbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-orbit {
+  transform-origin: 50px 50px;
+  animation: orbit 36s linear infinite;
+}
+
+.animate-orbit-slow {
+  transform-origin: 50px 50px;
+  animation: orbit 60s linear infinite reverse;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-orbit,
+  .animate-orbit-slow {
+    animation: none;
+  }
+}
