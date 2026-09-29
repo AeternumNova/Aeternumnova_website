@@ -9,7 +9,7 @@ const columns = [
       { label: 'About', href: '/company' },
       { label: 'Vision', href: '/company#vision' },
       { label: 'Mission', href: '/company#mission' },
-      { label: 'Team', href: '/company#leadership' },
+      { label: 'Team', href: '/team' },
       { label: 'Careers', href: '/careers' },
     ],
   },

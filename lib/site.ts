@@ -11,7 +11,7 @@ export const mainNav = [
   { label: 'Products', href: '/products' },
   { label: 'Innovation', href: '/innovation' },
   { label: 'Insights', href: '/insights' },
-  { label: 'Team', href: '/company#leadership' },
+  { label: 'Team', href: '/team' },
 ]
 
 export type ProductStatus = 'Currently Building' | 'Coming Soon' | 'Exploration'
@@ -38,7 +38,18 @@ export const portfolio: PortfolioItem[] = [
   { index: '04', name: 'Future Product', status: 'Exploration' },
 ]
 
-export type TeamMember = { name: string; role: string }
+export type TeamMember = {
+  name: string
+  role: string
+  /** Path under /public, e.g. '/team/donald.jpg'. Omit to show an initials avatar. */
+  photo?: string
+  /** Short bio shown on the team page. */
+  bio?: string
+  /** Where the member works from, shown on the team page. */
+  location?: string
+  /** Optional profile link (LinkedIn etc). */
+  link?: string
+}
 
 export const leadership: TeamMember[] = [
   { name: 'Donald Ehwerunu', role: 'Founder & CEO' },

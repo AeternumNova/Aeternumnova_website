@@ -238,7 +238,7 @@ export function TeamSection() {
     <Section labelledBy="team-title">
       <div className="flex flex-wrap items-end justify-between gap-6">
         <SectionHeading id="team-title" eyebrow="The Team" title="The people building AeternumNova." />
-        <LinkButton href="/company#leadership" variant="outline" arrow>
+        <LinkButton href="/team" variant="outline" arrow>
           About the company
         </LinkButton>
       </div>

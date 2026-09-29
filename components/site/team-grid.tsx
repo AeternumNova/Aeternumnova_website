@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { initials, leadership, team, type TeamMember } from '@/lib/site'
 import { cn } from '@/lib/utils'
 
@@ -6,12 +7,22 @@ function TeamCard({ member, lead = false }: { member: TeamMember; lead?: boolean
     <li className="flex items-center gap-4 bg-background p-5 sm:p-6">
       <span
         className={cn(
-          'flex shrink-0 items-center justify-center rounded-full border font-mono font-medium',
+          'relative flex shrink-0 items-center justify-center overflow-hidden rounded-full border font-mono font-medium',
           lead ? 'size-14 border-foreground/25 bg-foreground/[0.06] text-base' : 'size-11 border-border text-sm',
         )}
-        aria-hidden="true"
+        aria-hidden={member.photo ? undefined : 'true'}
       >
-        {initials(member.name)}
+        {member.photo ? (
+          <Image
+            src={member.photo}
+            alt={`Portrait of ${member.name}`}
+            fill
+            sizes="(min-width: 1024px) 96px, 64px"
+            className="object-cover"
+          />
+        ) : (
+          initials(member.name)
+        )}
       </span>
       <div className="min-w-0">
         <p className={cn('font-medium leading-snug', lead && 'text-lg')}>{member.name}</p>

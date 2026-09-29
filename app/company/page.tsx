@@ -117,6 +117,11 @@ export default function CompanyPage() {
         <div className="mt-14">
           <TeamGrid />
         </div>
+        <div className="mt-10">
+          <LinkButton href="/team" variant="outline" arrow>
+            Meet the full team
+          </LinkButton>
+        </div>
       </Section>
 
       <CtaBand
