@@ -6,6 +6,10 @@ export const MISSION =
 
 export const TAGLINE = 'Building technology for problems that matter.'
 
+/** Official company email, shown wherever partners or users need to reach us. */
+export const CONTACT_EMAIL = 'info@aeternumnova.tech'
+export const CONTACT_EMAIL_HREF = `mailto:${CONTACT_EMAIL}`
+
 export const mainNav = [
   { label: 'About', href: '/company' },
   { label: 'Products', href: '/products' },

@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { cn } from '@/lib/utils'
+import { CONTACT_EMAIL, CONTACT_EMAIL_HREF } from '@/lib/site'
 
 export const contactTopics = [
   { value: 'partnership', label: 'Partnership' },
@@ -26,8 +27,12 @@ export function ContactForm({ initialTopic }: { initialTopic: string }) {
       <div role="status" className="rounded-2xl border border-border bg-card p-8">
         <p className="text-xl font-medium tracking-tight">Thanks. Your message is noted.</p>
         <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-          This form is a preview and isn&apos;t connected to an inbox yet, so nothing was sent. Official contact channels
-          will be published here soon.
+          This form is a preview and isn&apos;t connected to an inbox yet, so nothing was sent. In the meantime, email us
+          directly at{' '}
+          <a href={CONTACT_EMAIL_HREF} className="break-all underline underline-offset-4 hover:text-foreground/80">
+            {CONTACT_EMAIL}
+          </a>
+          .
         </p>
         <button
           type="button"
@@ -109,7 +114,13 @@ export function ContactForm({ initialTopic }: { initialTopic: string }) {
         >
           Send message
         </button>
-        <p className="text-xs text-muted-foreground">Preview form, not yet connected to an inbox.</p>
+        <p className="text-xs text-muted-foreground">
+          Preview form, not yet connected to an inbox. Prefer email? Write to{' '}
+          <a href={CONTACT_EMAIL_HREF} className="underline underline-offset-4 hover:text-foreground">
+            {CONTACT_EMAIL}
+          </a>
+          .
+        </p>
       </div>
     </form>
   )

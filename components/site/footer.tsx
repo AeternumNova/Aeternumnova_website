@@ -1,6 +1,7 @@
 import Link from 'next/link'
+import { Mail } from 'lucide-react'
 import { Logo } from './logo'
-import { TAGLINE } from '@/lib/site'
+import { TAGLINE, CONTACT_EMAIL, CONTACT_EMAIL_HREF } from '@/lib/site'
 
 const columns = [
   {
@@ -53,10 +54,17 @@ export function Footer() {
           <div className="max-w-sm">
             <Logo />
             <p className="mt-5 text-balance text-2xl font-medium leading-snug tracking-tight">{TAGLINE}</p>
+            <a
+              href={CONTACT_EMAIL_HREF}
+              className="mt-6 inline-flex w-fit items-center gap-2 whitespace-nowrap text-sm text-muted-foreground transition-colors hover:text-foreground"
+            >
+              <Mail className="size-4 shrink-0" aria-hidden="true" />
+              <span className="underline-offset-4 hover:underline">{CONTACT_EMAIL}</span>
+            </a>
           </div>
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-5">
             {columns.map((col) => (
-              <div key={col.title}>
+              <div key={col.title} className="min-w-0">
                 <h2 className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
                   {col.title}
                 </h2>
